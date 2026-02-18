@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: biosignal
+      POSTGRES_PASSWORD: biosignal
+      POSTGRES_DB: biosignal
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U biosignal"]
+      interval: 5s
+      retries: 5
+
+volumes:
+  pgdata:
