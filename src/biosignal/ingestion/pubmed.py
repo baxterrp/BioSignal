@@ -60,7 +60,7 @@ class PubMedFetcher:
         for article in root.findall(".//PubmedArticle"):
             pmid = article.findtext(".//PMID", default="")
             title = article.findtext(".//ArticleTitle", default="")
-            abstract = article.findtext(".//AbstractText")
+            abstract = article.findtext(".//AbstractText", default="")
             authors = [
                 f"{a.findtext('LastName', '')} {a.findtext('Initials', '')}".strip()
                 for a in article.findall(".//Author")
