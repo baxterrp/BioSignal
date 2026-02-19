@@ -13,7 +13,7 @@ class PubMedFetcher:
         params = {
             "db": "pubmed",
             "term": query,
-            "retmax": max_results,
+            "retmax": str(max_results),
             "retmode": "json",
             "api_key": settings.ncbi_api_key,
         }
